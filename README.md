@@ -1,6 +1,9 @@
 ## Description
+A URL shortener built with TypeScript(NestJS).
+## Technologies👨‍💻.
 
-Link shortener built with NodeJS using NestJS framwork
+- NestJS
+- MongoDB(Mongoose)
 ## Installation
 
 ```bash

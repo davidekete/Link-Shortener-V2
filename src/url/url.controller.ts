@@ -11,7 +11,7 @@ export class UrlController {
     @Body()
     url: UrlDto,
   ) {
-    return await this.service.shortenLink(url);
+    return this.service.shortenLink(url);
   }
 
   @Get(':code')

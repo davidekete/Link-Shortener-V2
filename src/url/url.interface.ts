@@ -1,8 +1,6 @@
-import { Document } from 'mongoose';
-
-export interface UrlInterface extends Document {
+export interface UrlInterface {
   urlCode?: string;
   longUrl: string;
   shortUrl?: string;
-  created?: string;
+  dateCreated?: string;
 }

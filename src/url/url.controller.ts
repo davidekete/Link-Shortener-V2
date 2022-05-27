@@ -15,7 +15,11 @@ export class UrlController {
   }
 
   @Get(':code')
-  async redirect(@Res() res, @Param('code') code: string) {
+  async redirect(
+    @Res() res,
+    @Param('code')
+    code: string,
+  ) {
     const url = await this.service.redirect(code);
     if (url) {
       return res.redirect(url.longUrl);

@@ -16,7 +16,7 @@ export class Url {
   shortUrl: string;
 
   @Prop()
-  created: string;
+  dateCreated: string;
 }
 
 export const UrlSchema = SchemaFactory.createForClass(Url);

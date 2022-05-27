@@ -23,16 +23,14 @@ export class UrlService {
     const { longUrl } = url;
 
     if (!isUri(process.env.BASE_URL)) {
-      console.log('base url wahala');
-      throw new UnprocessableEntityException();
+      throw new UnprocessableEntityException('The Base URL is not a Valid URI');
+    }
+
+    if (!isUri(longUrl)) {
+      throw new UnprocessableEntityException('The URL entered is not Valid');
     }
 
     const urlCode = generate();
-
-    if (!isUri(longUrl)) {
-      console.log('long url wahala');
-      throw new UnprocessableEntityException();
-    }
 
     try {
       let url = await this.urlModel.findOne({ longUrl });
@@ -43,13 +41,13 @@ export class UrlService {
         longUrl,
         shortUrl,
         urlCode,
-        date: new Date(),
+        dateCreated: new Date(),
       }).save();
 
       return url;
     } catch (error) {
       console.log(error);
-      throw new UnprocessableEntityException();
+      throw new UnprocessableEntityException('Server Error');
     }
   }
 

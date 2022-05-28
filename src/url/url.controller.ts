@@ -21,8 +21,7 @@ export class UrlController {
     code: string,
   ) {
     const url = await this.service.redirect(code);
-    if (url) {
-      return res.redirect(url.longUrl);
-    }
+
+    return res.redirect(url.longUrl);
   }
 }

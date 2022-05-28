@@ -53,7 +53,10 @@ export class UrlService {
 
   async redirect(code: string): Promise<Url> {
     try {
-      return await this.urlModel.findOne({ urlCode: code });
+      const url = await this.urlModel.findOne({ urlCode: code });
+      if (url) {
+        return url;
+      }
     } catch (error) {
       console.log(error);
       throw new NotFoundException();

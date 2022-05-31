@@ -8,7 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Url, UrlDocument } from './schemas/url.schema';
 import { UrlDto } from './dtos/url.dto';
 import { isUri } from 'valid-url';
-import { generate } from 'shortid';
+import { nanoid } from 'nanoid';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -30,7 +30,7 @@ export class UrlService {
       throw new UnprocessableEntityException('The URL entered is not Valid');
     }
 
-    const urlCode = generate();
+    const urlCode = nanoid(10);
 
     try {
       let url = await this.urlModel.findOne({ longUrl });
@@ -59,7 +59,7 @@ export class UrlService {
       }
     } catch (error) {
       console.log(error);
-      throw new NotFoundException();
+      throw new NotFoundException('Resource Not Found');
     }
   }
 }
